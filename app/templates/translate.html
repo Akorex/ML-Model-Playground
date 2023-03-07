@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+English to French Translator 
+
+{% endblock %}
+
+
+{% block page_content %}
+<h2> English to French Translator</h2>
+<p> This project allows you to insert French sentences and translate them to 
+    English sentences. </p>
+
+<p> This works by taking advantage of the SOTA transformer models for translation 
+    on HuggingFace Hub. 
+</p>
+
+<h3> Let's Go</h3>
+<form action="{{ url_for('handle_text') }}"  method="POST">
+    <textarea name="text" rows="8" cols="50" placeholder="Enter a sentence in French"></textarea>
+    
+    <br>
+    <br>
+    <input type="submit"/>
+</form>
+
+
+{% endblock %}
