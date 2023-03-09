@@ -1,0 +1,16 @@
+.form-wrapper {
+    display: flex;
+  }
+  
+  .form-wrapper form {
+    width: 50%; /* adjust the width as needed */
+  }
+  
+  .form-wrapper .flash-message {
+    width: 50%; /* adjust the width as needed */
+    margin-left: 10px; /* add some spacing between the form and message */
+  }
+  
+  .flash-message {
+    margin-right: 10px;
+  }

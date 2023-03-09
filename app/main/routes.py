@@ -1,6 +1,6 @@
 # import dependencies
 import os
-from flask import render_template, redirect, request, flash
+from flask import render_template, redirect, request, flash, url_for
 from app import app
 from werkzeug.utils import secure_filename
 # import the function for predictions
@@ -121,17 +121,23 @@ def upload_tumors():
     return " "
 
 
+#@app.route('/translator', methods=['GET', 'POST'])
+#def translator_page():
+ #   return render_template('translate.html')
+
 @app.route('/translator', methods=['GET', 'POST'])
-def translator_page():
-    return render_template('translate.html')
-
-@app.route('/translator-result', methods=['GET', 'POST'])
-def handle_text():
-
+def translator_page():    
+    # collect the text-input
     if request.method == 'POST':
         text_input = request.form.get('text')
-        translated_text = translate_text(text_input)
 
-        return render_template('translate-result.html', input_text = text_input, translated_text = translated_text)
+        if text_input == ' ':
+            flash("Please enter some text")
+        else:
+            translated_text = translate_text(text_input)
+            flash(f"Your text: {text_input} Translation: {translated_text}")
+        return redirect(url_for('translator_page'))
+
+    else:
+        return render_template('translate.html')
     
-    return " "
