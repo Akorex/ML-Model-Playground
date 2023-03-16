@@ -135,7 +135,7 @@ def translator_page():
             flash("Please enter some text")
         else:
             translated_text = translate_text(text_input)
-            flash(f"Your text: {text_input} Translation: {translated_text}")
+            flash(f"Translation: {translated_text}")
         return redirect(url_for('translator_page'))
 
     else:
